@@ -87,9 +87,13 @@ func (d *DriverMath) GenerateIdQuestionAnswer() (id, question, answer string) {
 		a := rand.Int31n(5) + rand.Int31n(5)
 		b := rand.Int31n(10)
 
-		question = fmt.Sprintf("%d-%d=?", a, b)
-		mathResult = a - b
-
+		if a > b {
+			question = fmt.Sprintf("%d-%d=?", a, b)
+			mathResult = a - b
+		} else {
+			question = fmt.Sprintf("%d-%d=?", b, a)
+			mathResult = b - a
+		}
 	}
 	answer = fmt.Sprintf("%d", mathResult)
 	return
