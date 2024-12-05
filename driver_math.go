@@ -75,22 +75,17 @@ func (d *DriverMath) ConvertFonts() *DriverMath {
 // GenerateIdQuestionAnswer creates id,captcha content and answer
 func (d *DriverMath) GenerateIdQuestionAnswer() (id, question, answer string) {
 	id = RandomId()
-	operators := []string{"+", "-", "x"}
+	operators := []string{"+", "-"}
 	var mathResult int32
-	switch operators[rand.Int31n(3)] {
+	switch operators[rand.Int31n(2)] {
 	case "+":
-		a := rand.Int31n(20)
-		b := rand.Int31n(20)
-		question = fmt.Sprintf("%d+%d=?", a, b)
-		mathResult = a + b
-	case "x":
 		a := rand.Int31n(10)
 		b := rand.Int31n(10)
-		question = fmt.Sprintf("%dx%d=?", a, b)
-		mathResult = a * b
+		question = fmt.Sprintf("%d+%d=?", a, b)
+		mathResult = a + b
 	default:
-		a := rand.Int31n(80) + rand.Int31n(20)
-		b := rand.Int31n(80)
+		a := rand.Int31n(5) + rand.Int31n(5)
+		b := rand.Int31n(10)
 
 		question = fmt.Sprintf("%d-%d=?", a, b)
 		mathResult = a - b
